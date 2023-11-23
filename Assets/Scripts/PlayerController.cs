@@ -102,13 +102,15 @@ public class PlayerController : MonoBehaviour
         moveVector = Vector3.zero;
         moveVector.x = joystick.Horizontal * moveSpeed * Time.deltaTime;
         moveVector.z = joystick.Vertical * moveSpeed * Time.deltaTime;
+        
+        anim.SetFloat("walkSpeedValue", moveVector.magnitude * 100);
 
         if (joystick.Horizontal != 0 || joystick.Vertical != 0)
         {
             Vector3 direction =
                 Vector3.RotateTowards(transform.forward, moveVector, rotationSpeed * Time.deltaTime, 0f);
             transform.rotation = Quaternion.LookRotation(direction);
-
+            
             MoveAnim();
         }
         else if (joystick.Horizontal == 0 || joystick.Vertical == 0)
