@@ -289,7 +289,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   joystick: {fileID: 945681399}
   moveSpeed: 5
-  rotationSpeed: 5
+  rotationSpeed: 10
   anim: {fileID: 43901573}
   originalAnim: {fileID: 9100000, guid: 69db974598ef0a54a8fa2e0d357e5faf, type: 2}
   animRiffle: {fileID: 22100000, guid: c983c703caa8bf540a7d43a50cd1cb90, type: 2}
@@ -3037,7 +3037,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   joystick: {fileID: 945681399}
   moveSpeed: 5
-  rotationSpeed: 5
+  rotationSpeed: 10
   anim: {fileID: 904591640}
   originalAnim: {fileID: 9100000, guid: 69db974598ef0a54a8fa2e0d357e5faf, type: 2}
   animRiffle: {fileID: 22100000, guid: c983c703caa8bf540a7d43a50cd1cb90, type: 2}
@@ -3074,7 +3074,7 @@ Rigidbody:
   m_AngularDrag: 0.05
   m_UseGravity: 1
   m_IsKinematic: 0
-  m_Interpolate: 0
+  m_Interpolate: 2
   m_Constraints: 112
   m_CollisionDetection: 0
 --- !u!95 &904591640
