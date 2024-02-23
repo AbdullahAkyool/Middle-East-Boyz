@@ -1,0 +1,19 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!221 &22100000
+AnimatorOverrideController:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: CharacterRiffleStateMachine
+  m_Controller: {fileID: 9100000, guid: 73e100b378447bc4597d234e8c4c128c, type: 2}
+  m_Clips:
+  - m_OriginalClip: {fileID: -203655887218126122, guid: b315a9431430a1c40bee7abec8ce4367, type: 3}
+    m_OverrideClip: {fileID: 7400000, guid: e1efb1e5f2994ec4f9a2930c0c12250b, type: 2}
+  - m_OriginalClip: {fileID: -203655887218126122, guid: 0db5a7d12f1d0f1458bc5db27fe40240, type: 3}
+    m_OverrideClip: {fileID: 7400000, guid: 92c71e1c898ab3c4fbeed76fc476a4a8, type: 2}
+  - m_OriginalClip: {fileID: -203655887218126122, guid: e6cfa4af07758fb4fa581c464a682f88, type: 3}
+    m_OverrideClip: {fileID: 7400000, guid: ac1a063350e2e8e49bb47da9143ea83a, type: 2}
+  - m_OriginalClip: {fileID: -203655887218126122, guid: 883b7faa3611b894aa18454e37b821ba, type: 3}
+    m_OverrideClip: {fileID: 7400000, guid: 33c879820c2522241bb14f5bf32cdb73, type: 2}
