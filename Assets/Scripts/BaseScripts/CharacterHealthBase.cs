@@ -24,4 +24,14 @@ public class CharacterHealthBase : MonoBehaviour
     {
         //damageEffect.Play();
     }
+    
+    public void CheckHealth(out bool isDie)
+    {
+        isDie = currentHealth <= 0;
+        if (currentHealth <= 0)
+        {
+            GetComponent<CharacterControlBase>().Die();
+            isDead = true;
+        }
+    }
 }

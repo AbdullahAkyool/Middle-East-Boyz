@@ -2,29 +2,15 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.AI;
 
 public abstract class CharacterControlBase : MonoBehaviour
 {
-    protected Rigidbody rb;
+    [Header("--Attack--")] 
 
     public string targetTag;
-    public List<GameObject> Targets = new List<GameObject>();
+    private List<GameObject> Targets = new List<GameObject>();
     public GameObject closestTarget;
-    protected float distanceToTarget;
-    
-    public float playerAttackDistance;
-    public float enemyLookDistance;
-    public float enemyAttackDistance;
-    
-    private WeaponHolder weaponHolder;
-    public WeaponBaseCharacterFeature defaultNoWeapon;
-    void Start()
-    {
-        rb = GetComponent<Rigidbody>();
-        weaponHolder = GetComponent<WeaponHolder>();
-        weaponHolder.EquipWeapon(defaultNoWeapon);
-    }
-
     public void FindTarget()
     {
         GameObject[] targetCharacters = GameObject.FindGameObjectsWithTag(targetTag);

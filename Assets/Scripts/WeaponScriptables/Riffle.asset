@@ -13,7 +13,9 @@ MonoBehaviour:
   m_Name: Riffle
   m_EditorClassIdentifier: 
   gunStateMachine: {fileID: 22100000, guid: a7543ea36d3c52a4faa216b6c4d20eba, type: 2}
-  weaponPrefab: {fileID: 0}
+  weaponPrefab: {fileID: 1644339950899989082, guid: 7c02012be9c1d6f44be3ad55e427607e, type: 3}
+  weaponImage: {fileID: 21300000, guid: 00a2c1b94db5c904388613ee27bd5493, type: 3}
+  weaponName: Riffle
   playerAttackDistance: 15
   enemyLookDistance: 20
   enemyAttackDistance: 15

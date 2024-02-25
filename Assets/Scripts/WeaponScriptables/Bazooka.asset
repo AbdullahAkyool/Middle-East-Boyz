@@ -13,7 +13,9 @@ MonoBehaviour:
   m_Name: Bazooka
   m_EditorClassIdentifier: 
   gunStateMachine: {fileID: 22100000, guid: 97b769f659bd6b74ca70032021e3b434, type: 2}
-  weaponPrefab: {fileID: 0}
+  weaponPrefab: {fileID: 5378142460368026276, guid: 8a374580e9417e04c90d49f0ac5109dc, type: 3}
+  weaponImage: {fileID: 21300000, guid: cd87ed20543a56543ae1b218df1eba4a, type: 3}
+  weaponName: Bazooka
   playerAttackDistance: 15
   enemyLookDistance: 20
   enemyAttackDistance: 15

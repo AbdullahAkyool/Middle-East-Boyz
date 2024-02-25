@@ -1,20 +1,46 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.AI;
 
 public class EnemyController : CharacterControlBase
 {
+    [Header("--Control--")] 
     public bool canAttack;
-
     public bool canWalk;
+    public Transform weaponHolderTransform;
+    public float enemyLookDistance;
+    public float enemyAttackDistance;
+    
+    [Header("--Components--")] 
+    public WeaponBaseCharacterFeature enemyWeapon;
+    private Animator animatorOverrideController;
+    private NavMeshAgent agent;
+    
+    
+    void Start()
+    {
+        agent = GetComponent<NavMeshAgent>();
+        animatorOverrideController = GetComponent<Animator>();
+        
+        if (enemyWeapon.weaponPrefab)
+        {
+            Instantiate(enemyWeapon.weaponPrefab,weaponHolderTransform);
+        }
+        animatorOverrideController.runtimeAnimatorController = enemyWeapon.gunStateMachine;
+        enemyAttackDistance = enemyWeapon.enemyAttackDistance;
+        enemyLookDistance = enemyWeapon.enemyLookDistance;
+    }
     public override void LookTarget()
     {
         var target = ClosestTarget();
         if (!target) return;
-        distanceToTarget = Vector3.Distance(transform.position, target.transform.position);
+        var distanceToTarget = Vector3.Distance(transform.position, target.transform.position);
         
         if (distanceToTarget <= enemyLookDistance && distanceToTarget > enemyAttackDistance && !target.GetComponent<CharacterHealthBase>().isDead)
         {
+            agent.enabled = true;
+            
             canWalk = true;
             canAttack = false;
             
@@ -24,9 +50,12 @@ public class EnemyController : CharacterControlBase
             Quaternion fixedTargetRot = Quaternion.Euler(transform.rotation.eulerAngles.x, targetRot.eulerAngles.y, transform.rotation.eulerAngles.z);
             
             transform.rotation = Quaternion.Lerp(transform.rotation, fixedTargetRot, Time.deltaTime * 25f);
+
         }
         else if (distanceToTarget <= enemyAttackDistance && !target.GetComponent<CharacterHealthBase>().isDead)
         {
+            agent.enabled = false;
+
             canWalk = false;
             canAttack = true;
             
@@ -36,9 +65,12 @@ public class EnemyController : CharacterControlBase
             Quaternion fixedTargetRot = Quaternion.Euler(transform.rotation.eulerAngles.x, targetRot.eulerAngles.y, transform.rotation.eulerAngles.z);
             
             transform.rotation = Quaternion.Lerp(transform.rotation, fixedTargetRot, Time.deltaTime * 25f);
+
         }
         else if(distanceToTarget >= enemyLookDistance || target.GetComponent<CharacterHealthBase>().isDead)
         {
+            agent.enabled = false;
+            
             canWalk = false;
             canAttack = false;
         }
@@ -54,9 +86,11 @@ public class EnemyController : CharacterControlBase
 
             direction.Normalize();
 
-            Vector3 movement = direction * 2f * Time.fixedDeltaTime;
+            Vector3 movement = direction * 50 * Time.deltaTime;
 
-            rb.MovePosition(transform.position + movement);
+           // rb.MovePosition(transform.position + movement);
+
+           agent.SetDestination(target.transform.position);
         }
     }
 

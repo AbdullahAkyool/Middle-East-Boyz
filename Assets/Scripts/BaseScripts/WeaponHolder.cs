@@ -7,13 +7,15 @@ public class WeaponHolder : MonoBehaviour
 {
     public WeaponBaseCharacterFeature currentWeapon;
     public Transform weaponHolderTransform;
-    private CharacterControlBase characterController;
-    private Animator animatorOverrideController;
+    private PlayerController playerController;
+    public Animator animatorOverrideController;
 
-    private void Start()
+    private void Awake()
     {
-        characterController = GetComponent<CharacterControlBase>();
+        playerController = GetComponent<PlayerController>();
         animatorOverrideController = GetComponent<Animator>();
+
+        ActionManager.OnWeaponSelected += EquipWeapon;
     }
 
     public void EquipWeapon(WeaponBaseCharacterFeature newWeapon)
@@ -36,8 +38,8 @@ public class WeaponHolder : MonoBehaviour
         }
 
         animatorOverrideController.runtimeAnimatorController = currentWeapon.gunStateMachine;
-        characterController.playerAttackDistance = currentWeapon.playerAttackDistance;
-        characterController.enemyAttackDistance = currentWeapon.enemyAttackDistance;
-        characterController.enemyLookDistance = currentWeapon.enemyLookDistance;
+        playerController.playerAttackDistance = currentWeapon.playerAttackDistance;
+        //characterController.enemyAttackDistance = currentWeapon.enemyAttackDistance;
+        //characterController.enemyLookDistance = currentWeapon.enemyLookDistance;
     }
 }

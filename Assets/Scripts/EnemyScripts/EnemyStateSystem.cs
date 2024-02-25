@@ -6,24 +6,23 @@ using UnityEngine;
 public class EnemyStateSystem : CharacterStateSystem
 {
     private EnemyController enemyController;
-    private EnemyHealthSystem enemyHealthSystem;
 
-    private void Awake()
+    protected override void Awake()
     {
-        enemyController = GetComponent<EnemyController>();
-        enemyHealthSystem = GetComponent<EnemyHealthSystem>();
+        base.Awake();
+        enemyController = characterControlBase as EnemyController;
     }
 
     public override void CharacterIdleState()
     {
         enemyController.FindTarget();
         enemyController.LookTarget();
-        enemyHealthSystem.CheckHealth();
+        characterHealthBase.CheckHealth(out bool isDie);
 
-        if (enemyHealthSystem.isDead)
+        if (isDie)
         {
             isIdle = false;
-            isDie = true;
+                this.isDie = true;
         }
 
         if (enemyController.canWalk)
@@ -44,12 +43,12 @@ public class EnemyStateSystem : CharacterStateSystem
         enemyController.FindTarget();
         enemyController.LookTarget();
         enemyController.Move();
-        enemyHealthSystem.CheckHealth();
+        characterHealthBase.CheckHealth(out bool isDie);
 
-        if (enemyHealthSystem.isDead)
+        if (isDie)
         {
             isWalk = false;
-            isDie = true;
+                this.isDie = true;
         }
 
         if (!enemyController.canWalk)
@@ -63,12 +62,12 @@ public class EnemyStateSystem : CharacterStateSystem
     {
         enemyController.Move();
         enemyController.LookTarget();
-        enemyHealthSystem.CheckHealth();
+        characterHealthBase.CheckHealth(out bool isDie);
 
-        if (enemyHealthSystem.isDead)
+        if (isDie)
         {
             isAttack = false;
-            isDie = true;
+                this.isDie = true;
         }
 
         if (!enemyController.canAttack)

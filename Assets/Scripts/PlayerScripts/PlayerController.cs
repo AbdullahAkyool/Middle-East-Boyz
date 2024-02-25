@@ -5,22 +5,34 @@ using UnityEngine;
 
 public class PlayerController : CharacterControlBase
 {
+    [Header("--Player Movement--")] 
     [SerializeField] private FloatingJoystick joystick;
     [SerializeField] private float moveSpeed;
     [SerializeField] private float rotationSpeed;
     private Vector3 moveVector;
-
     [SerializeField] private GameObject playerModel;
-
+    
+    [Header("--Control--")] 
     public bool isMoving;
     public bool hasTarget;
+    public float playerAttackDistance;
+
+    [Header("--Components--")] 
+    private WeaponHolder weaponHolder;
+    public WeaponBaseCharacterFeature defaultNoWeapon;
+
+    private void Start()
+    {
+        weaponHolder = GetComponent<WeaponHolder>();
+        weaponHolder.EquipWeapon(defaultNoWeapon);
+    }
 
     public override void LookTarget()
     {
         var target = ClosestTarget();
         if (!target) return;
-        distanceToTarget = Vector3.Distance(transform.position, target.transform.position);
-        
+        var distanceToTarget = Vector3.Distance(transform.position, target.transform.position);
+
         if (distanceToTarget <= playerAttackDistance && !target.GetComponent<CharacterHealthBase>().isDead)
         {
             hasTarget = true;
@@ -45,23 +57,34 @@ public class PlayerController : CharacterControlBase
     {
         if (isMoving)
         {
-            Quaternion targetRotation = Quaternion.LookRotation(moveVector);
-            transform.rotation = Quaternion.Lerp(transform.rotation, targetRotation, rotationSpeed * Time.deltaTime);
-            
-            // Vector3 direction =
-            //     Vector3.RotateTowards(transform.forward, moveVector, rotationSpeed * Time.deltaTime, 0f);
-            
-            //transform.rotation = Quaternion.LookRotation(direction);
+           Quaternion targetRotation = Quaternion.LookRotation(moveVector); 
+           transform.rotation = Quaternion.Lerp(transform.rotation, targetRotation, rotationSpeed * Time.deltaTime);
 
-            rb.MovePosition(rb.position + moveVector);
+
+            //rb.MovePosition(rb.position + moveVector);
+
+            //rb.position += moveVector;
+            // agent.enabled = true;
+            // agent.velocity = moveVector * Time.deltaTime;
+
+            transform.position = Vector3.MoveTowards(transform.position,transform.position + moveVector,Time.deltaTime * 5f);
+            
+            
+            //agent.Move(moveVector * Time.deltaTime);
         }
+        // else
+        // {
+        //     agent.velocity = Vector3.zero;
+        //     agent.enabled = false;
+        // }
     }
+
 
     public void JoystickCheck()
     {
         moveVector = Vector3.zero;
-        moveVector.x = joystick.Horizontal * moveSpeed * Time.deltaTime;
-        moveVector.z = joystick.Vertical * moveSpeed * Time.deltaTime;
+        moveVector.x = joystick.Horizontal * moveSpeed;
+        moveVector.z = joystick.Vertical * moveSpeed;
 
         if (joystick.Horizontal != 0 || joystick.Vertical != 0)
         {
@@ -79,10 +102,6 @@ public class PlayerController : CharacterControlBase
         hasTarget = false;
     }
 }
-
-
-
-
 
 
 // using System.Collections;

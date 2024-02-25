@@ -6,12 +6,10 @@ using UnityEngine;
 public class PlayerStateSystem : CharacterStateSystem
 {
     private PlayerController playerController;
-    private PlayerHealthSystem playerHealthSystem;
-
-    private void Awake()
+    protected override void Awake()
     {
-        playerController = GetComponent<PlayerController>();
-        playerHealthSystem = GetComponent<PlayerHealthSystem>();
+        base.Awake();
+        playerController = characterControlBase as PlayerController;
     }
 
     public override void CharacterIdleState()
@@ -19,12 +17,12 @@ public class PlayerStateSystem : CharacterStateSystem
         playerController.JoystickCheck();
         playerController.FindTarget();
         playerController.LookTarget();
-        playerHealthSystem.CheckHealth();
+        characterHealthBase.CheckHealth(out bool isDie);
 
-        if (playerHealthSystem.isDead)
+        if (base.isDie)
         {
             isIdle = false;
-            isDie = true;
+                this.isDie = true;
         }
 
         if (playerController.isMoving)
@@ -46,12 +44,12 @@ public class PlayerStateSystem : CharacterStateSystem
         playerController.Move();
         playerController.FindTarget();
         playerController.LookTarget();
-        playerHealthSystem.CheckHealth();
+        characterHealthBase.CheckHealth(out bool isDie);
 
-        if (playerHealthSystem.isDead)
+        if (isDie)
         {
             isWalk = false;
-            isDie = true;
+                this.isDie = true;
         }
 
         if (!playerController.isMoving)
@@ -70,12 +68,12 @@ public class PlayerStateSystem : CharacterStateSystem
     {
         playerController.JoystickCheck();
         playerController.LookTarget();
-        playerHealthSystem.CheckHealth();
+        characterHealthBase.CheckHealth(out bool isDie);
 
-        if (playerHealthSystem.isDead)
+        if (isDie)
         {
             isAttack = false;
-            isDie = true;
+                this.isDie = true;
         }
 
         if (!playerController.hasTarget)

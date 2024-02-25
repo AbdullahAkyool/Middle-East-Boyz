@@ -3,7 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ActionManager : MonoBehaviour
+public static class ActionManager
 {
-    
+    public static Action<WeaponBaseCharacterFeature> OnWeaponSelected;
 }

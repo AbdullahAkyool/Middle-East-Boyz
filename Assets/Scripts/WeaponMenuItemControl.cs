@@ -17,11 +17,6 @@ public class WeaponMenuItemControl : MonoBehaviour
         itemButtonName.text = itemWeapon.weaponName;
         itemImage.sprite = itemWeapon.weaponImage;
         
-        itemButton.onClick.AddListener(EquipWeapon);
-    }
-
-    void EquipWeapon()
-    {
-        playerWeaponHolder.EquipWeapon(itemWeapon);
+        itemButton.onClick.AddListener(() => ActionManager.OnWeaponSelected?.Invoke(itemWeapon));
     }
 }
