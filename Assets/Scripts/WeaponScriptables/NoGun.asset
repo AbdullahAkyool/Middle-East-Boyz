@@ -18,4 +18,4 @@ MonoBehaviour:
   weaponName: Punch
   playerAttackDistance: 1
   enemyLookDistance: 3
-  enemyAttackDistance: 1.2
+  enemyAttackDistance: 1

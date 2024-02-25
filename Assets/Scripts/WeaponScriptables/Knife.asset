@@ -18,4 +18,4 @@ MonoBehaviour:
   weaponName: Knife
   playerAttackDistance: 1
   enemyLookDistance: 10
-  enemyAttackDistance: 1.2
+  enemyAttackDistance: 1
