@@ -40,7 +40,7 @@ public class EnemyStateSystem : CharacterStateSystem
 
     public override void CharacterWalkState()
     {
-        enemyController.FindTarget();
+        //enemyController.FindTarget();
         enemyController.LookTarget();
         enemyController.Move();
         characterHealthBase.CheckHealth(out bool isDie);
@@ -60,7 +60,7 @@ public class EnemyStateSystem : CharacterStateSystem
 
     public override void CharacterAttackState()
     {
-        enemyController.Move();
+       // enemyController.Move();
         enemyController.LookTarget();
         characterHealthBase.CheckHealth(out bool isDie);
 

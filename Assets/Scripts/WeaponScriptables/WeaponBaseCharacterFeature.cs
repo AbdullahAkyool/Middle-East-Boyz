@@ -11,6 +11,7 @@ public class WeaponBaseCharacterFeature : ScriptableObject
    public GameObject weaponPrefab;
    public Sprite weaponImage;
    public string weaponName;
+   public float weaponDamagePower;
    
    public float playerAttackDistance;
    public float enemyLookDistance;

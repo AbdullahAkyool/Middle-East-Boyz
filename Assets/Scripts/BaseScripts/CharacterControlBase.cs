@@ -11,6 +11,7 @@ public abstract class CharacterControlBase : MonoBehaviour
     public string targetTag;
     private List<GameObject> Targets = new List<GameObject>();
     public GameObject closestTarget;
+    public float damagePower;
     public void FindTarget()
     {
         GameObject[] targetCharacters = GameObject.FindGameObjectsWithTag(targetTag);

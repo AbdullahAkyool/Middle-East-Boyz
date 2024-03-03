@@ -42,7 +42,7 @@ public class PlayerStateSystem : CharacterStateSystem
     {
         playerController.JoystickCheck();
         playerController.Move();
-        playerController.FindTarget();
+       // playerController.FindTarget();
         playerController.LookTarget();
         characterHealthBase.CheckHealth(out bool isDie);
 

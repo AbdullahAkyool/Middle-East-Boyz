@@ -1,19 +1,22 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class WeaponHolder : MonoBehaviour
 {
-    public WeaponBaseCharacterFeature currentWeapon;
+    private WeaponBaseCharacterFeature currentWeapon;
     public Transform weaponHolderTransform;
     private PlayerController playerController;
-    public Animator animatorOverrideController;
+    private AnimationEventController animationEventController;
+    private Animator animatorOverrideController;
 
     private void Awake()
     {
         playerController = GetComponent<PlayerController>();
         animatorOverrideController = GetComponent<Animator>();
+        animationEventController = GetComponent<AnimationEventController>();
 
         ActionManager.OnWeaponSelected += EquipWeapon;
     }
@@ -34,11 +37,13 @@ public class WeaponHolder : MonoBehaviour
 
         if (currentWeapon.weaponPrefab)
         {
-            Instantiate(currentWeapon.weaponPrefab,weaponHolderTransform);
+            animationEventController.currentWeapon = Instantiate(currentWeapon.weaponPrefab,weaponHolderTransform);
         }
 
         animatorOverrideController.runtimeAnimatorController = currentWeapon.gunStateMachine;
         playerController.playerAttackDistance = currentWeapon.playerAttackDistance;
+        playerController.damagePower = currentWeapon.weaponDamagePower;
+        //playerController.currentWeapon = currentWeapon;
         //characterController.enemyAttackDistance = currentWeapon.enemyAttackDistance;
         //characterController.enemyLookDistance = currentWeapon.enemyLookDistance;
     }

@@ -16,6 +16,7 @@ MonoBehaviour:
   weaponPrefab: {fileID: 3890036839007720321, guid: b9010ad01ea482849afa2075e23df9fe, type: 3}
   weaponImage: {fileID: 21300000, guid: 2ab60873344de1e4abc1a830a3343a4c, type: 3}
   weaponName: Pistol
+  weaponDamagePower: 20
   playerAttackDistance: 10
   enemyLookDistance: 15
   enemyAttackDistance: 10

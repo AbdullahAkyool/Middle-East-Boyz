@@ -83,6 +83,37 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!1 &709568183665310508
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 3722709008597036492}
+  m_Layer: 0
+  m_Name: BulletSpawnPoint
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &3722709008597036492
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 709568183665310508}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0.429}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 4853419386351030843}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &5378142460368026276
 GameObject:
   m_ObjectHideFlags: 0
@@ -95,6 +126,7 @@ GameObject:
   - component: {fileID: 8575897228814490121}
   - component: {fileID: 2596563221223208334}
   - component: {fileID: 9159144267957953047}
+  - component: {fileID: -1758262069609791669}
   m_Layer: 0
   m_Name: Bazooka
   m_TagString: Untagged
@@ -118,6 +150,7 @@ Transform:
   - {fileID: 4547183016421829618}
   - {fileID: 1376153634656942376}
   - {fileID: 5887299025070758111}
+  - {fileID: 3722709008597036492}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: -11.936, y: 90, z: -90}
 --- !u!33 &8575897228814490121
@@ -192,6 +225,21 @@ MeshCollider:
   m_Convex: 1
   m_CookingOptions: 30
   m_Mesh: {fileID: 43758826790206180, guid: ce1f86b6372077241bada2ccd994cfce, type: 2}
+--- !u!114 &-1758262069609791669
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5378142460368026276}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8d3f935fd0b5f0c419856952a55e28f9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  bulletPrefab: {fileID: 4501373214539259183, guid: da7ec88ed928af145813370a6bc39d18, type: 3}
+  spawnPosition: {fileID: 3722709008597036492}
+  poolSize: 10
 --- !u!1 &6236690567112254174
 GameObject:
   m_ObjectHideFlags: 0

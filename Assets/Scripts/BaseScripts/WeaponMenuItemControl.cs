@@ -10,7 +10,6 @@ public class WeaponMenuItemControl : MonoBehaviour
     public Button itemButton;
     public TMP_Text itemButtonName;
     public Image itemImage;
-    public WeaponHolder playerWeaponHolder;
 
     void Start()
     {

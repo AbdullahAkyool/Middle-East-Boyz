@@ -16,20 +16,23 @@ public class EnemyController : CharacterControlBase
     public WeaponBaseCharacterFeature enemyWeapon;
     private Animator animatorOverrideController;
     private NavMeshAgent agent;
+    private AnimationEventController animationEventController;
     
     
     void Start()
     {
         agent = GetComponent<NavMeshAgent>();
         animatorOverrideController = GetComponent<Animator>();
+        animationEventController = GetComponent<AnimationEventController>();
         
         if (enemyWeapon.weaponPrefab)
         {
-            Instantiate(enemyWeapon.weaponPrefab,weaponHolderTransform);
+            animationEventController.currentWeapon = Instantiate(enemyWeapon.weaponPrefab,weaponHolderTransform);
         }
         animatorOverrideController.runtimeAnimatorController = enemyWeapon.gunStateMachine;
         enemyAttackDistance = enemyWeapon.enemyAttackDistance;
         enemyLookDistance = enemyWeapon.enemyLookDistance;
+        damagePower = enemyWeapon.weaponDamagePower;
     }
     public override void LookTarget()
     {
@@ -69,6 +72,8 @@ public class EnemyController : CharacterControlBase
         }
         else if(distanceToTarget >= enemyLookDistance || target.GetComponent<CharacterHealthBase>().isDead)
         {
+            RemoveTarget(target.GetComponent<CharacterControlBase>());
+            
             agent.enabled = false;
             
             canWalk = false;
@@ -98,6 +103,7 @@ public class EnemyController : CharacterControlBase
     {
         canAttack = false;
         canWalk = false;
+        tag = "Untagged";
     }
 }
 

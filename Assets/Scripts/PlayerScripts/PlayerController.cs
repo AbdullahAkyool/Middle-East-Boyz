@@ -19,12 +19,12 @@ public class PlayerController : CharacterControlBase
 
     [Header("--Components--")] 
     private WeaponHolder weaponHolder;
-    public WeaponBaseCharacterFeature defaultNoWeapon;
+    public WeaponBaseCharacterFeature currentWeapon;
 
     private void Start()
     {
         weaponHolder = GetComponent<WeaponHolder>();
-        weaponHolder.EquipWeapon(defaultNoWeapon);
+        weaponHolder.EquipWeapon(currentWeapon);
     }
 
     public override void LookTarget()
@@ -100,6 +100,7 @@ public class PlayerController : CharacterControlBase
     {
         isMoving = false;
         hasTarget = false;
+        tag = "Untagged";
     }
 }
 

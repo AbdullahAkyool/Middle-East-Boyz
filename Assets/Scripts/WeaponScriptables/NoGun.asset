@@ -16,6 +16,7 @@ MonoBehaviour:
   weaponPrefab: {fileID: 0}
   weaponImage: {fileID: 21300000, guid: 953788c38f317da43a34aed5e4091cfd, type: 3}
   weaponName: Punch
+  weaponDamagePower: 1
   playerAttackDistance: 1
   enemyLookDistance: 3
   enemyAttackDistance: 1
