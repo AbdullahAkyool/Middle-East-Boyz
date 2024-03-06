@@ -100,6 +100,7 @@ MonoBehaviour:
   bulletTarget: {fileID: 0}
   bulletSpeed: 2
   bulletSpawner: {fileID: 0}
+  bulletPower: 3
 --- !u!136 &5347189872261702551
 CapsuleCollider:
   m_ObjectHideFlags: 0

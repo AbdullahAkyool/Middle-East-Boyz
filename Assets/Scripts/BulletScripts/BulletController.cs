@@ -8,35 +8,29 @@ public abstract class BulletController : MonoBehaviour
    public Transform bulletTarget;
    public float bulletSpeed;
    public BulletSpawner bulletSpawner;
+   public float bulletPower;
 
-   private void Awake()
+   protected virtual void Awake()
    {
       bulletSpawner = GetComponentInParent<BulletSpawner>();
    }
 
    private void OnEnable()
    {
-      if(bulletTarget == null) return;
+      if(!bulletTarget) return;
       MoveToTarget();
    }
 
    protected abstract void MoveToTarget();
 
-   private void Destroy()
+   protected void DamageToTarget(CharacterHealthBase characterHealthBase)
+   {
+      characterHealthBase.TakeDamage(bulletPower);
+   }
+
+   protected void Destroy()
    {
       bulletSpawner.DeSpawn(this);
    }
-
-   private void OnTriggerEnter(Collider other)
-   {
-      // if (other.TryGetComponent(out CharacterControlBase characterControlBase))
-      // {
-      //    Destroy();
-      // }
-
-      if (other.gameObject == bulletTarget.gameObject)
-      {
-            Destroy();         
-      }
-   }
+   protected abstract IEnumerator DestroyCo();
 }

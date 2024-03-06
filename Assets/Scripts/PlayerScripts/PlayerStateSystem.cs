@@ -19,7 +19,7 @@ public class PlayerStateSystem : CharacterStateSystem
         playerController.LookTarget();
         characterHealthBase.CheckHealth(out bool isDie);
 
-        if (base.isDie)
+        if (isDie)
         {
             isIdle = false;
                 this.isDie = true;

@@ -12,6 +12,8 @@ public class BulletSpawner : MonoBehaviour
 
     private CharacterControlBase characterControlBase;
 
+    public ParticleSystem muzzleEffect;
+
     private void Awake()
     {
         bulletPool = new Queue<BulletController>();
@@ -48,6 +50,8 @@ public class BulletSpawner : MonoBehaviour
         bulletObject.GetComponent<BulletController>().bulletTarget = characterControlBase.closestTarget.transform;
         
         bulletObject.gameObject.SetActive(true);
+        
+        muzzleEffect.Play();
 
     }
 
