@@ -6,6 +6,8 @@ using UnityEngine.AI;
 public class EnemyController : CharacterControlBase
 {
     [Header("--Control--")] 
+    public float enemyMoneyValue;
+    
     public bool canAttack;
     public bool canWalk;
     public Transform weaponHolderTransform;

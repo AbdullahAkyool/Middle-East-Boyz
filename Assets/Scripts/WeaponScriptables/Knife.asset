@@ -17,6 +17,7 @@ MonoBehaviour:
   weaponImage: {fileID: 21300000, guid: 200d9c63f5d350b46959df4885036370, type: 3}
   weaponName: Knife
   weaponDamagePower: 10
+  weaponPrice: 5
   playerAttackDistance: 1
   enemyLookDistance: 10
   enemyAttackDistance: 1

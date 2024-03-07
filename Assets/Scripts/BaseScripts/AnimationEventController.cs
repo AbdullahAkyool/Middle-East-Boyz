@@ -16,8 +16,11 @@ public class AnimationEventController : MonoBehaviour
    public void PunchAndKnife()
    {
       if (characterController.closestTarget == null) return;
-      characterController.closestTarget.GetComponent<CharacterHealthBase>().TakeDamage(characterController.damagePower);
-      characterController.closestTarget.GetComponent<CharacterHealthBase>().DamageEffect();
+      
+      var targetCharacterHealth = characterController.closestTarget.GetComponent<CharacterHealthBase>();
+      
+      targetCharacterHealth.TakeDamage(characterController.damagePower);
+      targetCharacterHealth.GetComponent<CharacterHealthBase>().DamageEffect();
    }
    
    public void Pistol()

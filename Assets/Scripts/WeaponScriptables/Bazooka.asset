@@ -17,6 +17,7 @@ MonoBehaviour:
   weaponImage: {fileID: 21300000, guid: cd87ed20543a56543ae1b218df1eba4a, type: 3}
   weaponName: Bazooka
   weaponDamagePower: 30
+  weaponPrice: 100
   playerAttackDistance: 15
   enemyLookDistance: 20
   enemyAttackDistance: 15

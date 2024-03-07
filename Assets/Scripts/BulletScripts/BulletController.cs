@@ -26,6 +26,7 @@ public abstract class BulletController : MonoBehaviour
    protected void DamageToTarget(CharacterHealthBase characterHealthBase)
    {
       characterHealthBase.TakeDamage(bulletPower);
+      characterHealthBase.DamageEffect();
    }
 
    protected void Destroy()

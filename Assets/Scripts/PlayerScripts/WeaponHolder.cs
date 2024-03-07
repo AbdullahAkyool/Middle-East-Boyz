@@ -23,6 +23,8 @@ public class WeaponHolder : MonoBehaviour
 
     public void EquipWeapon(WeaponBaseCharacterFeature newWeapon)
     {
+        if(MoneyManager.Instance.currentMoneyCount < newWeapon.weaponPrice) return;
+        
         currentWeapon = newWeapon;
 
         int childCount = weaponHolderTransform.childCount;

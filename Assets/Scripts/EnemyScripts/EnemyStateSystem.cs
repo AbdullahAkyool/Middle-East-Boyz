@@ -82,5 +82,6 @@ public class EnemyStateSystem : CharacterStateSystem
     public override void CharacterDieState()
     {
         enemyController.Die();
+        MoneyManager.Instance.EarnMoney(enemyController.enemyMoneyValue); 
     }
 }

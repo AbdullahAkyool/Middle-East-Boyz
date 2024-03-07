@@ -17,6 +17,7 @@ MonoBehaviour:
   weaponImage: {fileID: 21300000, guid: 00a2c1b94db5c904388613ee27bd5493, type: 3}
   weaponName: Riffle
   weaponDamagePower: 25
+  weaponPrice: 50
   playerAttackDistance: 15
   enemyLookDistance: 20
   enemyAttackDistance: 15

@@ -7,7 +7,7 @@ public class CharacterHealthBase : MonoBehaviour
     public float maxHealth;
     public float currentHealth;
     public bool isDead;
-    //public ParticleSystem damageEffect;
+    public ParticleSystem damageEffect;
 
     private void Start()
     {
@@ -22,7 +22,7 @@ public class CharacterHealthBase : MonoBehaviour
 
     public virtual void DamageEffect()
     {
-        //damageEffect.Play();
+        damageEffect.Play();
     }
     
     public void CheckHealth(out bool isDie)
